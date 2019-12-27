@@ -36,4 +36,7 @@ urlpatterns = [
     path(iis_app_alias + 'admin/', admin.site.urls),
     path(iis_app_alias + 'data/', include('data.urls')),
     path(iis_app_alias + 'chart/', include('chart.urls')),
+
+    path(iis_app_alias + '', include('chart.urls')),
+
 ]

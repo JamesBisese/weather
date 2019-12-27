@@ -35,7 +35,10 @@ function change_station() {
 	var hchart = Highcharts.charts[chart.getAttribute('data-highcharts-chart')];
 	hchart.setTitle({text: 'Air Temperature and Air Pressure at ' + site_codeA});
 	hchart.setTitle(null, {text: 'Air Temperature and Air Pressure at ' + site_codeB});
-	// alert('soon I will change the chart stations to ' + stationDom.value + ' and ' + stationBDom.value);
+
+	hchart.setTitle({text: 'Air Temperature at ' + site_codeA});
+	hchart.setTitle(null, {text: 'Air Temperature at ' + site_codeB});
+
 
 	requestData(hchart, site_codeA, site_codeB);
 }
@@ -68,12 +71,12 @@ function addData(hchart, site_code, series_id, data){
 	var pressure_data = [];
 	data.forEach(function(obs){
 		airtemp_data.push([obs.timestamp * 10, obs.airtemp]);
-		pressure_data.push([obs.timestamp * 10, obs.airpressure]);
+		// pressure_data.push([obs.timestamp * 10, obs.airpressure]);
 	});
 	hchart.series[series_id].name = site_code + " Air Temperature";
 	hchart.series[series_id].setData(airtemp_data);
-	hchart.series[series_id + 1].name = site_code + " Air Pressure";
-	hchart.series[series_id + 1].setData(pressure_data);
+	// hchart.series[series_id + 1].name = site_code + " Air Pressure";
+	// hchart.series[series_id + 1].setData(pressure_data);
 }
 
 
@@ -263,7 +266,7 @@ $(function ()
 				gridLineWidth: 0,
 				title:
 				{
-					text: 'Air Pressure (inches)',
+					// text: 'Air Pressure (inches)',
 					style: {
 						color: Highcharts.getOptions().colors[0]
 					}
